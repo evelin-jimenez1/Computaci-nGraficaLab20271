@@ -79,15 +79,17 @@ int main() {
 	// Define las dimensiones del viewport
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	//CrearShader();
+	CrearShader();
 
 	// Set up vertex data (and buffer(s)) and attribute pointers
-	GLfloat vertices[] =
-	{
-		-0.5f, -0.5f, 0.0f, // Left
-		0.5f, -0.5f, 0.0f, // Right
-		0.0f,  0.5f, 0.0f  // Top
+
+	GLfloat vertices[] = {
+		// Posiciones (X, Y, Z)    // Colores (R, G, B)
+		-0.5f, -0.5f, 0.0f,        1.0f, 0.0f, 0.0f, // Izquierda: Rojo
+		 0.5f, -0.5f, 0.0f,        0.0f, 1.0f, 0.0f, // Derecha:   Verde
+		 0.0f,  0.5f, 0.0f,        0.0f, 0.0f, 1.0f  // Arriba:    Azul
 	};
+
 
 
 	GLuint VBO, VAO;
@@ -99,8 +101,9 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)0);
 	glEnableVertexAttribArray(0);
+
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
@@ -119,7 +122,7 @@ int main() {
 
 		// Render
 		// Clear the colorbuffer
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.15f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
