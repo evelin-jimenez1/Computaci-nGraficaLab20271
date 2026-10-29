@@ -122,7 +122,7 @@ float tailSpeed = 40.0f;  // velocidad de la cola (grados/seg)
 
 // Duracion de la caminata
 float walkTime = 0.0f;           // tiempo acumulado caminando
-const float WALK_DURATION = 10.0f; // la animacion dura 10 segundos
+const float WALK_DURATION = 35.0f; // la animacion dura 10 segundos
 
 
 
@@ -532,7 +532,7 @@ void Animation() {
 	{
 		switch (dogAnim)
 		{
-		case 1: // ESTADO "CAMINAR"
+		case 1: 
 		{
 			// Pos++ : avanza en la direccion en la que mira el perro
 			// (con dogRot = 0 avanza sobre +Z)
@@ -560,7 +560,6 @@ void Animation() {
 					step = false;
 			}
 
-			// Temporizador: la caminata dura 10 segundos
 			walkTime += deltaTime;
 			if (walkTime >= WALK_DURATION)
 			{
